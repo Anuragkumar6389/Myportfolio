@@ -14,14 +14,14 @@ This is my personal portfolio website built using HTML, CSS, and JavaScript.
 - JavaScript
 
 ## 🌐 Live Demo
-link-- https://Anurag.netlify.app
+https://Anurag.netlify.app
 
 ## 📂 Project Structure
 - index.html
 - style.css
 - script.js
 - images/
-Anurag_kumar_CV.pdf
+- Anurag_kumar_CV.pdf
 
 ## 👨‍💻 Author
 Anurag Kumar  
