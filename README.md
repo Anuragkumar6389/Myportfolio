@@ -14,8 +14,8 @@ This is my personal portfolio website built using HTML, CSS, and JavaScript.
 - JavaScript
 
 ## 🌐 Live Demo
-https://Anurag.netlify.app
 
+https://anuragdeveloper-portfolio.netlify.app/
 ## 📂 Project Structure
 - index.html
 - style.css
