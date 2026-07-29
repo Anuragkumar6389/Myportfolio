@@ -68,34 +68,87 @@
             observer.observe(skillsSection);
         }
 
-        // Form submission handling
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
+        const contactForm = document.getElementById("contactForm");
+const statusMessage = document.getElementById("statusMessage");
+const submitBtn = document.getElementById("submitBtn");
+
+contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    submitBtn.innerHTML = "Sending...";
+    submitBtn.disabled = true;
+
+    const formData = new FormData(contactForm);
+
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+
+            alert("Thank you for your message! I will get back to you soon.");
+
+            statusMessage.innerHTML = "✅ Message Sent Successfully!";
+            statusMessage.style.color = "#00cc66";
+
             contactForm.reset();
-        });
 
-        // Active navigation link on scroll
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
+        } else {
 
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.style.color = 'var(--dark-yellow)';
-                } else {
-                    link.style.color = 'var(--primary-yellow)';
-                }
-            });
-        });
-    
+            alert("Failed to send message!");
+
+            statusMessage.innerHTML = "❌ Failed to send message!";
+            statusMessage.style.color = "red";
+
+        }
+
+    } catch (error) {
+
+        alert("Network Error!");
+
+        statusMessage.innerHTML = "❌ Network Error!";
+        statusMessage.style.color = "red";
+
+        console.log(error);
+
+    } finally {
+
+        submitBtn.innerHTML = "Send Message";
+        submitBtn.disabled = false;
+
+    }
+});
+
+/* Portfolio Visitor Counter */
+
+fetch("https://api.counterapi.dev/v1/anurag-kumar-portfolio-2026/visits/up")
+.then(res => res.json())
+.then(data => {
+
+    let total = data.count;
+
+    let current = 0;
+
+    let counter = document.getElementById("visitor-count");
+
+    let animation = setInterval(() => {
+
+        current++;
+
+        counter.innerHTML = current.toLocaleString();
+
+        if (current >= total) {
+            clearInterval(animation);
+        }
+
+    }, 20);
+
+})
+.catch(error => {
+    console.log("Visitor Counter Error:", error);
+    document.getElementById("visitor-count").innerHTML = "0";
+});

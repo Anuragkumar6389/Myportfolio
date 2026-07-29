@@ -631,6 +631,14 @@ section {
     border: 2px solid var(--light-gray);
 }
 
+#statusMessage{
+    margin-top:15px;
+    text-align:center;
+    font-size:16px;
+    font-weight:600;
+    min-height:20px;
+}
+
 .contact-icon {
     font-size: 2rem;
     color: var(--primary-yellow);
@@ -829,4 +837,93 @@ footer p {
     .btn {
         width: 100%;
     }
+}
+
+/* ============================= */
+/* Portfolio Analytics Section */
+/* ============================= */
+
+.portfolio-stats{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+margin:70px auto;
+max-width:1200px;
+padding:20px;
+
+}
+
+.stat-card{
+
+background:rgba(255,255,255,.06);
+border:2px solid #FFD700;
+border-radius:18px;
+padding:30px;
+text-align:center;
+backdrop-filter:blur(12px);
+
+transition:.4s;
+
+box-shadow:0 0 18px rgba(255,215,0,.25);
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px) scale(1.03);
+
+box-shadow:0 0 30px rgba(255,215,0,.6);
+
+}
+
+.stat-icon{
+
+font-size:45px;
+margin-bottom:15px;
+
+}
+
+.stat-card h3{
+
+color:#FFD700;
+font-size:22px;
+margin-bottom:12px;
+
+}
+
+.stat-card h1{
+
+color:white;
+font-size:40px;
+font-weight:bold;
+
+}
+
+.online{
+
+color:#00ff66 !important;
+
+animation:blink 1s infinite;
+
+}
+
+@keyframes blink{
+
+50%{
+
+opacity:.4;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.portfolio-stats{
+
+grid-template-columns:1fr;
+
+}
+
 }
