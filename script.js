@@ -152,3 +152,220 @@ fetch("https://api.counterapi.dev/v1/anurag-kumar-portfolio-2026/visits/up")
     console.log("Visitor Counter Error:", error);
     document.getElementById("visitor-count").innerHTML = "0";
 });
+
+/* =====================================================
+   CERTIFICATE PDF THUMBNAILS
+===================================================== */
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+function loadCertificatePDF(pdfPath, canvasId, loadingId) {
+
+    const canvas =
+        document.getElementById(canvasId);
+
+    const loading =
+        document.getElementById(loadingId);
+
+
+    if (!canvas) {
+
+        console.error(
+            "Canvas not found:",
+            canvasId
+        );
+
+        return;
+    }
+
+
+    const context =
+        canvas.getContext("2d");
+
+
+    pdfjsLib
+        .getDocument(pdfPath)
+        .promise
+
+        .then(function(pdf) {
+
+            return pdf.getPage(1);
+
+        })
+
+        .then(function(page) {
+
+
+            /*
+             * IMPORTANT:
+             * rotation: 0
+             * PDF ko automatically rotate
+             * nahi karega.
+             */
+
+            const originalViewport =
+                page.getViewport({
+                    scale: 1,
+                    rotation: 0
+                });
+
+
+            const container =
+                canvas.parentElement;
+
+
+            const maxWidth =
+                container.clientWidth - 30;
+
+
+            const maxHeight =
+                container.clientHeight - 30;
+
+
+            const widthScale =
+                maxWidth /
+                originalViewport.width;
+
+
+            const heightScale =
+                maxHeight /
+                originalViewport.height;
+
+
+            /*
+             * Certificate ko card ke andar
+             * proper contain rakhenge.
+             */
+
+            const scale =
+                Math.min(
+                    widthScale,
+                    heightScale
+                );
+
+
+            const viewport =
+                page.getViewport({
+
+                    scale: scale,
+
+                    rotation: 0
+
+                });
+
+
+            canvas.width =
+                viewport.width;
+
+
+            canvas.height =
+                viewport.height;
+
+
+            canvas.style.width =
+                viewport.width + "px";
+
+
+            canvas.style.height =
+                viewport.height + "px";
+
+
+            return page.render({
+
+                canvasContext: context,
+
+                viewport: viewport
+
+            }).promise;
+
+        })
+
+        .then(function() {
+
+            if (loading) {
+
+                loading.style.display =
+                    "none";
+
+            }
+
+        })
+
+        .catch(function(error) {
+
+            console.error(
+                "Certificate PDF error:",
+                pdfPath,
+                error
+            );
+
+
+            if (loading) {
+
+                loading.innerHTML =
+                    "Certificate preview unavailable";
+
+            }
+
+        });
+
+}
+
+
+/* =====================================================
+   LOAD ALL CERTIFICATES
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        loadCertificatePDF(
+
+            "./certificates/AI-skills-passport.pdf",
+
+            "pdf-ai",
+
+            "loading-ai"
+
+        );
+
+
+        loadCertificatePDF(
+
+            "./certificates/Android-Developer-certificate.pdf",
+
+            "pdf-android",
+
+            "loading-android"
+
+        );
+
+
+        loadCertificatePDF(
+
+            "./certificates/LLM-Certificate.pdf",
+
+            "pdf-llm",
+
+            "loading-llm"
+
+        );
+
+
+        loadCertificatePDF(
+
+            "./certificates/aws-certificate.pdf",
+
+            "pdf-aws",
+
+            "loading-aws"
+
+        );
+
+
+    }
+);
