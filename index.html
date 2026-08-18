@@ -50,41 +50,55 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <!-- Profile Photo - Replace 'your-photo.jpeg' with your actual photo path -->
-            <div class="profile-photo">
-                <img src="my profile.jpeg" alt="My Profile Photo"
-                    onerror="this.parentElement.style.display='none'; document.querySelector('.profile-photo-placeholder').style.display='flex';">
-            </div>
-            <!-- Placeholder shown if image not found -->
-            <div class="profile-photo-placeholder" style="display: none;">👨‍💻</div>
+    ```html
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-content">
 
-            <div class="hero-text-content">
-
-    <h1>Anurag Kumar</h1>
-
-    <h2>B.Tech CSE Student | Frontend & Web Developer</h2>
-
-    <p class="tagline">
-        I am Anurag Kumar, a passionate Computer Science and Engineering
-        student and aspiring Frontend & Web Developer. I build modern,
-        responsive, and user-focused websites using HTML, CSS, JavaScript,
-        and Python. I combine creativity, technical skills, and
-        problem-solving to create meaningful digital experiences and
-        innovative solutions.
-    </p>
-
-            </div>
-
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn">Get In Touch</a>
-                </div>
-            </div>
+        <!-- Profile Photo -->
+        <div class="profile-photo">
+            <img src="my profile.jpeg"
+                 alt="My Profile Photo"
+                 onerror="this.parentElement.style.display='none'; document.querySelector('.profile-photo-placeholder').style.display='flex';">
         </div>
-    </section>
+
+        <!-- Placeholder shown if image not found -->
+        <div class="profile-photo-placeholder" style="display: none;">
+            👨‍💻
+        </div>
+
+        <!-- Hero Text -->
+        <div class="hero-text-content">
+
+            <h1>Anurag Kumar</h1>
+
+            <h2>B.Tech CSE Student | Frontend & Web Developer</h2>
+
+            <p class="tagline">
+                I am Anurag Kumar, a passionate Computer Science and Engineering
+                student and aspiring Frontend & Web Developer. I build modern,
+                responsive, and user-focused websites using HTML, CSS, JavaScript,
+                and Python. I combine creativity, technical skills, and
+                problem-solving to create meaningful digital experiences and
+                innovative solutions.
+            </p>
+
+            <!-- Call To Action Buttons -->
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    View My Work
+                </a>
+
+                <a href="#contact" class="btn">
+                    Get In Touch
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
 
     <!-- About Section -->
 
