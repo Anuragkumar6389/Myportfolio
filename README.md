@@ -1,10 +1,9 @@
-# 🌐 Anurag Kumar - Frontend Developer Portfolio
+# 🌐 Anurag Kumar - Frontend Developer Portfolio 
 
 Welcome to my personal portfolio website. This project showcases my frontend development skills, projects, and journey as a **B.Tech Computer Science & Engineering student and Frontend Developer**.
 
 🔗 **Live Website:** https://anuragdeveloper-portfolio.netlify.app/
 
----
 
 ## 👨‍💻 About The Project
 
@@ -55,9 +54,10 @@ The main goal of this project is to demonstrate my frontend development knowledg
 
 # Integrations
 
-* Web3Forms
+* Web3form 
 * Google Analytics
 * Google Search Console
+* Seo optimized 
 
 ---
 
@@ -116,5 +116,7 @@ Frontend Developer
 ---
 
 ⭐ If you like this project, consider giving it a star!
+
+made with ❤️Anurag Kumar| Frontend Developer Portfolio 
 
 ---
